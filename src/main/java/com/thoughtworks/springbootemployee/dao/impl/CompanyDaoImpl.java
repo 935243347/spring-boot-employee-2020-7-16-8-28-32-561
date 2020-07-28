@@ -20,6 +20,8 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public void deleteCompany(int id) {
+        Company companyReadyToDelete = companies.stream().filter(company -> company.getId() == id).findFirst().get();
+        companies.remove(companyReadyToDelete);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void deleteCompany(int id) {
-
+        companyDao.deleteCompany(id);
     }
 
     @Override
