@@ -13,24 +13,33 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     EmployeeDao employeeDao;
 
-    public void addEmployee(Employee employee){
+    public void addEmployee(Employee employee) {
         employeeDao.addEmployee(employee);
     }
-    public void deleteEmployee(int id){
+
+    public void deleteEmployee(int id) {
         employeeDao.deleteEmployee(id);
     }
-    public Employee updateEmployee(Employee employee){
+
+    public Employee updateEmployee(Employee employee) {
         return employeeDao.updateEmployee(employee);
     }
-    public List<Employee> getAllEmployees(){
+
+    public List<Employee> getAllEmployees() {
         return employeeDao.getAllEmployees();
     }
-    public Employee getEmployee(int id){
+
+    public Employee getEmployee(int id) {
         return employeeDao.getEmployee(id);
     }
 
     @Override
     public List<Employee> getEmployeesByGender(String gender) {
         return employeeDao.getEmployeesByGender(gender);
+    }
+
+    @Override
+    public List<Employee> getEmployeesByPage(int page, int pageSize) {
+        return employeeDao.getEmployeesByPage(page, pageSize);
     }
 }

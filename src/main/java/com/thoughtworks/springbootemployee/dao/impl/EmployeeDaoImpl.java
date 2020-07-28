@@ -12,29 +12,43 @@ import java.util.stream.Collectors;
 public class EmployeeDaoImpl implements EmployeeDao {
     private final List<Employee> employees = new ArrayList<>();
 
-    public void addEmployee(Employee employee){
+    public void addEmployee(Employee employee) {
         employees.add(employee);
     }
-    public void deleteEmployee(int id){
-        Employee employeeReadyToDelete = employees.stream().filter(employee-> employee.getId()==id).findFirst().get();
+
+    public void deleteEmployee(int id) {
+        Employee employeeReadyToDelete = employees.stream().filter(employee -> employee.getId() == id).findFirst().get();
         employees.remove(employeeReadyToDelete);
     }
-    public Employee updateEmployee(Employee employee){
-        Employee employeeReadyToUnpdate = employees.stream().filter(e -> e.getId()==employee.getId()).findFirst().orElse(null);
+
+    public Employee updateEmployee(Employee employee) {
+        Employee employeeReadyToUnpdate = employees.stream().filter(e -> e.getId() == employee.getId()).findFirst().orElse(null);
         employees.remove(employeeReadyToUnpdate);
         employees.add(employee);
         return employeeReadyToUnpdate;
     }
-    public List<Employee> getAllEmployees(){
+
+    public List<Employee> getAllEmployees() {
         return employees;
     }
-    public Employee getEmployee(int id){
+
+    public Employee getEmployee(int id) {
         return employees.stream().filter(employee -> employee.getId() == id).findFirst().orElse(null);
     }
 
     @Override
     public List<Employee> getEmployeesByGender(String gender) {
-        List<Employee> list = employees.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
-        return list;
+        return employees.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Employee> getEmployeesByPage(int page, int pageSize) {
+        page = page == 0 ? 1 : page;
+        int fromIndex = (page - 1) * pageSize;
+        if (fromIndex >= employees.size()) return null;
+        if (employees.size() - fromIndex >= pageSize) {
+            return employees.subList(fromIndex, fromIndex + pageSize);
+        }
+        return employees.subList(fromIndex, employees.size());
     }
 }
