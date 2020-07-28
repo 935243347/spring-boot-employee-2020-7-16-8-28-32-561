@@ -32,7 +32,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> getAllCompanies() {
-        return null;
+        return companyDao.getAllCompanies();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> getCompanyByPage(int page, int pageSize) {
-        return null;
+        return companyDao.getCompanyByPage(page, pageSize);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public List<Company> getAllCompanies() {
-        return null;
+        return companies;
     }
 
     @Override
@@ -44,7 +44,13 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public List<Company> getCompanyByPage(int page, int pageSize) {
-        return null;
+        page = page == 0 ? 1 : page;
+        int fromIndex = (page - 1) * pageSize;
+        if (fromIndex >= companies.size()) return null;
+        if (companies.size() - fromIndex >= pageSize) {
+            return companies.subList(fromIndex, fromIndex + pageSize);
+        }
+        return companies.subList(fromIndex, companies.size());
     }
 
     @Override
