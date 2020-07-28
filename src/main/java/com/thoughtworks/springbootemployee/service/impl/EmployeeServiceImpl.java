@@ -28,4 +28,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getEmployee(int id){
         return employeeDao.getEmployee(id);
     }
+
+    @Override
+    public List<Employee> getEmployeesByGender(String gender) {
+        return employeeDao.getEmployeesByGender(gender);
+    }
 }

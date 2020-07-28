@@ -29,7 +29,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public List<Employee> getAllEmployees(){
+    public List<Employee> getEmployeesByCondition(
+            @RequestParam(value = "gender", required = false) String gender,
+            @RequestParam(value = "page", required = false) String page,
+            @RequestParam(value = "pageSize", required = false) String pageSize){
+        if(gender != null){
+            return employeeService.getEmployeesByGender(gender);
+        }
         return employeeService.getAllEmployees();
     }
 
