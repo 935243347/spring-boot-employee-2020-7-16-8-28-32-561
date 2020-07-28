@@ -37,7 +37,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company getCompanyById(int id) {
-        return null;
+        return companyDao.getCompanyById(id);
     }
 
     @Override
@@ -47,6 +47,6 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Employee> getAllEmployeeByCompanyId(int companyId) {
-        return null;
+        return companyDao.getAllEmployeeByCompanyId(companyId);
     }
 }

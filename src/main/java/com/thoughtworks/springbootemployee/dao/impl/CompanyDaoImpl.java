@@ -39,7 +39,7 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public Company getCompanyById(int id) {
-        return null;
+        return companies.stream().filter(company -> company.getId() == id).findFirst().orElse(null);
     }
 
     @Override
@@ -55,6 +55,6 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public List<Employee> getAllEmployeeByCompanyId(int companyId) {
-        return null;
+        return companies.stream().filter(company -> company.getId() == companyId).findFirst().orElse(null).getEmployees();
     }
 }
