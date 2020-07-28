@@ -22,10 +22,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     public Employee updateEmployee(Employee employee) {
-        Employee employeeReadyToUnpdate = employees.stream().filter(e -> e.getId() == employee.getId()).findFirst().orElse(null);
-        employees.remove(employeeReadyToUnpdate);
+        Employee employeeReadyToUpdate = employees.stream().filter(e -> e.getId() == employee.getId()).findFirst().orElse(null);
+        employees.remove(employeeReadyToUpdate);
         employees.add(employee);
-        return employeeReadyToUnpdate;
+        return employeeReadyToUpdate;
     }
 
     public List<Employee> getAllEmployees() {

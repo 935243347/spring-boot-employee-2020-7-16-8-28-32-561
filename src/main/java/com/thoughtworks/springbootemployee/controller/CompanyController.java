@@ -21,4 +21,9 @@ public class CompanyController {
         companyService.deleteCompany(id);
     }
 
+    @PutMapping("/companies")
+    public Company updateCompany(Company company){
+        return companyService.updateCompany(company);
+    }
+
 }

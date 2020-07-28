@@ -27,7 +27,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company updateCompany(Company company) {
-        return null;
+        return companyDao.updateCompany(company);
     }
 
     @Override

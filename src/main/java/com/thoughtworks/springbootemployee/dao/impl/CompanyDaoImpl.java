@@ -26,7 +26,10 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public Company updateCompany(Company company) {
-        return null;
+        Company companyReadyToUpdate = companies.stream().filter(e -> e.getId() == company.getId()).findFirst().orElse(null);
+        companies.remove(companyReadyToUpdate);
+        companies.add(company);
+        return companyReadyToUpdate;
     }
 
     @Override
