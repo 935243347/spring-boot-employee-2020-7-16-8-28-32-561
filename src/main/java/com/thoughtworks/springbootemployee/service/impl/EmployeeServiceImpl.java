@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Employee getEmployee(int id) {
-        return employeeDao.getEmployee(id);
+        return employeeDao.getEmployeeById(id);
     }
 
     @Override

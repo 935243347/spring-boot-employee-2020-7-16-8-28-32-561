@@ -32,7 +32,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employees;
     }
 
-    public Employee getEmployee(int id) {
+    public Employee getEmployeeById(int id) {
         return employees.stream().filter(employee -> employee.getId() == id).findFirst().orElse(null);
     }
 

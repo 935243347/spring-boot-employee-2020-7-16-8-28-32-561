@@ -13,7 +13,7 @@ public interface EmployeeDao {
 
     List<Employee> getAllEmployees();
 
-    Employee getEmployee(int id);
+    Employee getEmployeeById(int id);
 
     List<Employee> getEmployeesByGender(String gender);
 
