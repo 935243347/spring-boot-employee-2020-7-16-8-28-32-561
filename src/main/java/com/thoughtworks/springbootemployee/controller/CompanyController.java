@@ -5,6 +5,8 @@ import com.thoughtworks.springbootemployee.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CompanyController {
 
@@ -12,18 +14,28 @@ public class CompanyController {
     private CompanyService companyService;
 
     @PostMapping("/companies")
-    public void addCompany(@RequestBody Company company){
+    public void addCompany(@RequestBody Company company) {
         companyService.addCompany(company);
     }
 
     @DeleteMapping("/companies/{id}")
-    public void deleteCompany(@PathVariable int id){
+    public void deleteCompany(@PathVariable int id) {
         companyService.deleteCompany(id);
     }
 
     @PutMapping("/companies")
-    public Company updateCompany(Company company){
+    public Company updateCompany(Company company) {
         return companyService.updateCompany(company);
+    }
+
+    @GetMapping("/companies")
+    public List<Company> getCompanyByCondition(
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+        if (page != null && pageSize != null) {
+            return companyService.getCompanyByPage(page, pageSize);
+        }
+        return companyService.getAllCompanies();
     }
 
 }
