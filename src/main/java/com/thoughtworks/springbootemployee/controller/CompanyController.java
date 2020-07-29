@@ -19,6 +19,7 @@ public class CompanyController {
         companyService.addCompany(company);
     }
 
+    //todo
     @DeleteMapping("/companies/{id}")
     public void deleteCompany(@PathVariable int id) {
         companyService.deleteCompany(id);

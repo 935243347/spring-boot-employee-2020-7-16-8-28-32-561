@@ -55,6 +55,7 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public List<Employee> getAllEmployeeByCompanyId(int companyId) {
+        //todo return null get null
         return companies.stream().filter(company -> company.getId() == companyId).findFirst().orElse(null).getEmployees();
     }
 }

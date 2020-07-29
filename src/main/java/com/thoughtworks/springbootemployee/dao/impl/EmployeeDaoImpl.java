@@ -41,9 +41,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employees.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
     }
 
+    //todo extra a tool method or use springboot tool
     @Override
     public List<Employee> getEmployeesByPage(int page, int pageSize) {
-        page = page == 0 ? 1 : page;
+        page = page <= 0 ? 1 : page;
         int fromIndex = (page - 1) * pageSize;
         if (fromIndex >= employees.size()) return null;
         if (employees.size() - fromIndex >= pageSize) {
